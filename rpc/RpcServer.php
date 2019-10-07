@@ -1,5 +1,4 @@
 <?php
-namespace rpc;
 #使用select模型
 class RpcServer{
 
@@ -111,6 +110,3 @@ class RpcServer{
 		echo "关闭了连接\n";
 	}
 }
-
-
-$rpcServer = new RpcServer();

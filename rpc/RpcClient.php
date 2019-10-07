@@ -14,7 +14,7 @@ class RpcClient {
 		}
 
 		$data = [
-			'class' => basename($this->urlInfo['path']),
+			'class' => basename($this->urlInfo['path'] ?? ""),
 			'method'=>$name,
 			'params'=>$arguments
 		];
@@ -29,7 +29,10 @@ class RpcClient {
 	}
 }
 
-$cli = new RpcClient("http://127.0.0.1:9999/test");
-echo $cli->run()."\n";
-echo $cli->run2("123456")."\n";
+$cli = new RpcClient("http://127.0.0.1:9999");
+echo $cli->cmd5('123456')."\n";
+
+$cli2 = new RpcClient('http://127.0.0.1:9999/test');
+echo $cli2->run(),"\n";
+echo $cli2->run2("123456"),"\n";
 
