@@ -2,7 +2,7 @@
 
 class API
 {
-	public function api($parameter=""){
+	protected function test($parameter=""){
 		return $this->client_can_not_see($parameter);
 	}
 
