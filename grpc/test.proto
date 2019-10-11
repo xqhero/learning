@@ -1,0 +1,21 @@
+syntax="proto3";
+
+package grpc;
+
+message TestRequest {
+    int64 typeid = 1;
+}
+
+message TestReply {
+	
+    message GetData {
+	int64 id=1;
+	string name=2;
+    }
+    repeated GetData getdataarr = 1;
+}
+
+service XuexiTest {
+
+	rpc SayTest(TestRequest) returns (TestReply) {}
+}

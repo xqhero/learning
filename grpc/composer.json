@@ -1,0 +1,13 @@
+{
+    "name": "root/grpc",
+    "authors": [
+        {
+            "name": "xqhero",
+            "email": "123456@163.com"
+        }
+    ],
+    "require": {
+        "grpc/grpc": "^1.22",
+        "google/protobuf": "^3.10"
+    }
+}

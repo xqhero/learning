@@ -1,0 +1,13 @@
+version: '2.0'
+services:
+        web:
+                image: nginx:latest
+                ports:
+                - "8088:80"
+                volumes:
+                - ./www:/usr/share/nginx/html
+                
+                hostname: mynginx
+                container_name: mynginx
+                restart: always
+
