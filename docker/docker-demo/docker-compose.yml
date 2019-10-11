@@ -1,0 +1,56 @@
+version: "2"
+services:
+  webapp:
+      image: "nginx:latest"
+      ports:
+        - "8088:80"
+      depends_on:
+        - php
+        - db
+      links:
+        - php:myphp
+      volumes:
+        - $PWD/nginx/conf:/etc/nginx
+        - $PWD/nginx/www:/usr/share/nginx/html
+        - $PWD/nginx/logs:/var/logs/nginx
+      networks:
+        - mylnmp
+
+  php:
+        build: ./fpm
+        networks:
+         - mylnmp
+        depends_on:
+         - db
+        ports:
+         - "9000:9000"
+        volumes:
+         - $PWD/nginx/www:/var/web
+        links:
+         - db:mydb
+
+  db:
+        image: "mysql:latest"
+        networks:
+         - mylnmp
+        command: --default-authentication-plugin=mysql_native_password #这行代码解决无法访问的问题
+        environment:
+         MYSQL_ROOT_PASSWORD: root
+         MYSQL_USER: xqhero
+         MYSQL_PASSWORD: 1234567890
+        volumes:
+         - $PWD/mysql/data:/var/lib/mysql
+         - $PWD/mysql/etc:/etc/mysql
+        ports:
+         - "3306:3306"
+  redis:
+       image: "redis:latest"
+       networks:
+         - mylnmp
+       volumes:
+         - $PWD/redis/data:/data
+       ports:
+         - "6379:6379" 
+
+networks:
+   mylnmp:
