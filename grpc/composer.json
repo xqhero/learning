@@ -8,6 +8,6 @@
     ],
     "require": {
         "grpc/grpc": "^1.22",
-        "google/protobuf": "^3.10"
+        "google/protobuf": "^4.33"
     }
 }
